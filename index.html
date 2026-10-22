@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6662A6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="통상임금 계산기">
+<meta name="description" content="근로감독 현장용 통상임금·가산수당 검산 도구 (광역 AI 수사대)">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>통상임금 계산기 — 광역 AI 수사대 (2026.10.22 Claude 수정본)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+:root {
+  --green: #6662A6;
+  --green-light: #EEEDF8;
+  --green-dark: #514D8B;
+  --bg: #F5F4F9;
+  --surface: #FFFFFF;
+  --border: #E3E0ED;
+  --border-strong: #C8C3DA;
+  --text: #38354E;
+  --text-sub: #625F75;
+  --text-hint: #716D82;
+  --info-bg: #EEEDF8;
+  --info-text: #514D83;
+  --warn-bg: #FAEEDA;
+  --warn-text: #854F0B;
+  --success-bg: #EEEDF8;
+  --success-text: #57528F;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+body {
+  font-family: -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* 헤더 */
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 16px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.header-title { font-size: 17px; font-weight: 600; color: var(--text); letter-spacing: -0.3px; }
+.header-badge {
+  font-size: 10px; font-weight: 500; color: var(--green-dark);
+  background: var(--green-light); border-radius: 20px;
+  padding: 3px 8px; white-space: nowrap;
+}
+.header-sub { font-size: 11px; color: var(--text-sub); }
+.ver-chip { display:inline-block; margin-top:6px; font-size:10px; font-weight:600; color:#fff; background:var(--green); border-radius:4px; padding:2px 7px; }
+
+/* 탭 */
+.tab-bar {
+  display: flex; gap: 4px;
+  background: var(--bg);
+  padding: 10px 12px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.tab-btn {
+  flex: 1; padding: 9px 4px; font-size: 12px; font-weight: 500;
+  text-align: center; border: none; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  cursor: pointer; background: transparent; color: var(--text-hint);
+  border-bottom: 2px solid transparent; transition: all 0.15s;
+}
+.tab-btn.active { color: var(--green); border-bottom-color: var(--green); background: white; }
+
+/* 패널 */
+.panel { display: none; padding: 14px 12px 80px; }
+.panel.active { display: block; }
+
+/* 섹션 제목 */
+.section-title {
+  font-size: 10px; font-weight: 600; color: var(--text-hint);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin: 18px 0 8px; padding-left: 2px;
+}
+
+/* 카드 */
+.card {
+  background: var(--surface); border-radius: var(--radius);
+  border: 0.5px solid var(--border); padding: 14px;
+  margin-bottom: 8px;
+}
+
+/* 입력 행 */
+.row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+.row:last-child { border-bottom: none; padding-bottom: 0; }
+.row:first-child { padding-top: 0; }
+.row-label { font-size: 13px; color: var(--text); flex: 1; min-width: 0; }
+.row-label .sub { font-size: 11px; color: var(--text-hint); display: block; margin-top: 1px; }
+.input-group { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.input-group input[type=number] {
+  width: 108px; font-size: 13px; text-align: right;
+  border: 0.5px solid var(--border-strong); border-radius: var(--radius-sm);
+  padding: 7px 8px; background: var(--bg); color: var(--text);
+  -moz-appearance: textfield;
+}
+.input-group input[type=number]::-webkit-inner-spin-button { display: none; }
+.input-group input[type=number]:focus { outline: none; border-color: var(--green); }
+.unit { font-size: 12px; color: var(--text-hint); white-space: nowrap; }
+
+/* 상여금 섹션 */
+.bonus-mode-row { display: flex; gap: 5px; margin-bottom: 12px; }
+.mode-btn {
+  flex: 1; padding: 7px 2px; font-size: 11px; font-weight: 500;
+  text-align: center; border: 0.5px solid var(--border-strong);
+  border-radius: var(--radius-sm); cursor: pointer;
+  background: var(--bg); color: var(--text-sub); transition: all 0.15s;
+}
+.mode-btn.active { background: var(--green); color: white; border-color: var(--green); }
+.mode-panel { display: none; }
+.mode-panel.active { display: block; }
+.bonus-preview {
+  font-size: 11px; color: var(--info-text); background: var(--info-bg);
+  border-radius: var(--radius-sm); padding: 8px 10px; margin-top: 10px; line-height: 1.6;
+  white-space: pre-line;
+}
+select {
+  font-size: 13px; padding: 7px 8px;
+  border: 0.5px solid var(--border-strong); border-radius: var(--radius-sm);
+  background: var(--bg); color: var(--text);
+}
+
+/* 토글 */
+.toggle-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 0.5px solid var(--border); }
+.toggle-row:last-child { border-bottom: none; }
+.toggle-label { font-size: 13px; color: var(--text); flex: 1; }
+.toggle-label .sub { font-size: 11px; color: var(--text-hint); display: block; margin-top: 1px; }
+.toggle { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; cursor: pointer; inset: 0;
+  background: var(--border-strong); border-radius: 22px; transition: 0.2s;
+}
+.slider:before {
+  position: absolute; content: "";
+  height: 16px; width: 16px; left: 3px; bottom: 3px;
+  background: white; border-radius: 50%; transition: 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle input:checked + .slider { background: var(--green); }
+.toggle input:checked + .slider:before { transform: translateX(18px); }
+
+/* 배지 */
+.badge { font-size: 10px; padding: 3px 7px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.badge-in  { background: var(--success-bg); color: var(--success-text); }
+.badge-out { background: #F0EEF4; color: var(--text-hint); }
+.badge-cond{ background: var(--warn-bg); color: var(--warn-text); }
+
+/* 계산 버튼 */
+.calc-btn {
+  width: 100%; padding: 15px; background: var(--green); color: white;
+  border: none; border-radius: var(--radius); font-size: 15px; font-weight: 600;
+  cursor: pointer; margin-top: 12px; letter-spacing: -0.2px;
+  box-shadow: 0 2px 12px rgba(102,98,166,0.18);
+  transition: opacity 0.15s;
+}
+.calc-btn:active { opacity: 0.85; }
+.btn-row { display:flex; gap:8px; margin:4px 0 10px; }
+.sub-btn { flex:1; padding:12px 6px; font-size:13px; font-weight:600; border-radius:var(--radius-sm); cursor:pointer;
+  border:0.5px solid var(--border-strong); background:var(--surface); color:var(--green-dark); }
+.sub-btn.primary { background:var(--green); color:#fff; border-color:var(--green); }
+.sub-btn:active { opacity:.85; }
+.toast { position:fixed; left:50%; bottom:52px; transform:translateX(-50%); background:var(--text); color:#fff; font-size:12px;
+  padding:8px 14px; border-radius:20px; opacity:0; transition:opacity .2s; pointer-events:none; z-index:200; }
+.toast.show { opacity:.95; }
+.howto { font-size:12px; color:var(--text-sub); line-height:1.75; }
+.howto b { color:var(--text); }
+
+/* 결과 */
+.result-hero {
+  background: var(--green-light); border-radius: var(--radius); padding: 18px;
+  margin-bottom: 10px; text-align: center;
+}
+.result-hero-label { font-size: 12px; color: var(--text-sub); margin-bottom: 6px; }
+.result-hero-val { font-size: 32px; font-weight: 700; color: var(--green); letter-spacing: -1px; }
+.result-hero-unit { font-size: 15px; font-weight: 400; margin-left: 2px; }
+
+.metrics { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin-bottom: 10px; }
+.metric { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 12px; }
+.metric-label { font-size: 11px; color: var(--text-hint); margin-bottom: 5px; }
+.metric-val { font-size: 17px; font-weight: 600; color: var(--text); }
+.metric-unit { font-size: 11px; font-weight: 400; color: var(--text-hint); }
+
+.detail-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+.detail-row:last-child { border-bottom: none; }
+.detail-label { font-size: 12px; color: var(--text-sub); }
+.detail-val { font-size: 13px; font-weight: 500; color: var(--text); }
+.detail-val.out { color: var(--text-hint); text-decoration: line-through; font-weight: 400; }
+.detail-total { font-size: 14px; font-weight: 700; color: var(--green); }
+
+/* 정보 박스 */
+.info-box { background: var(--info-bg); border-radius: var(--radius-sm); padding: 11px 13px; margin-bottom: 8px; }
+.info-text { font-size: 11px; color: var(--info-text); line-height: 1.7; }
+.warn-box { background: var(--warn-bg); border-radius: var(--radius-sm); padding: 11px 13px; margin-bottom: 8px; }
+.warn-text { font-size: 11px; color: var(--warn-text); line-height: 1.7; }
+
+/* 가이드 */
+.guide-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--border); }
+.guide-row:last-child { border-bottom: none; }
+.guide-label { font-size: 13px; color: var(--text); flex: 1; }
+.guide-sub { font-size: 11px; color: var(--text-hint); display: block; margin-top: 1px; }
+
+/* 푸터 */
+.footer {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(245,244,249,0.96); backdrop-filter: blur(8px);
+  border-top: 0.5px solid var(--border);
+  padding: 8px 12px; text-align: center;
+  font-size: 10px; color: var(--text-hint);
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="header-title">⚖️ 통상임금 현장 계산기</span>
+    <span class="header-badge">광역 AI 수사대</span>
+  </div>
+  <div class="header-sub">2024.12.19 대법원 전원합의체 판결 기준 · 경기지방고용노동청</div>
+  <span class="ver-chip">2026.10.22 Claude 수정본</span>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('input')">임금 입력</button>
+  <button class="tab-btn" onclick="switchTab('result')">계산 결과</button>
+  <button class="tab-btn" onclick="switchTab('guide')">판단 기준</button>
+</div>
+
+<!-- ===== 입력 탭 ===== -->
+<div id="tab-input" class="panel active">
+
+  <div class="section-title">근로 기본 정보</div>
+  <div class="card">
+    <div class="row">
+      <span class="row-label">주 소정근로시간</span>
+      <div class="input-group">
+        <input type="number" id="weekly-hours" value="40" min="1" max="40" step="any">
+        <span class="unit">시간/주</span>
+      </div>
+    </div>
+    <div class="row">
+      <span class="row-label">월 통상임금 산정시간<span class="sub">주40h·유급주휴8h 기준 209h / 실제 약정 확인</span></span>
+      <div class="input-group">
+        <input type="number" id="monthly-hours" value="209" min="0.01" step="any">
+        <span class="unit">시간</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card"><div class="row"><span class="row-label">1일 소정근로시간<span class="sub">일급 환산에 사용</span></span><div class="input-group"><input type="number" id="daily-hours" value="8" min="0.01" max="8" step="any"><span class="unit">시간/일</span></div></div></div>
+  <div class="info-box"><p class="info-text">월 산정시간 209시간은 주 40시간·유급주휴 8시간을 전제로 한 기본값입니다. 단시간근로 또는 별도 유급시간 약정이 있으면 실제 월 산정시간을 확인하여 직접 입력하세요. 임금 항목은 산입 여부를 검토한 후 입력하며, 아래 스위치는 법적 판단을 자동으로 수행하지 않습니다.</p></div>
+  <div class="section-title">임금 항목</div>
+  <div class="card">
+    <div class="row">
+      <span class="row-label">기본급</span>
+      <div class="input-group"><input type="number" id="base-pay" value="0" min="0"><span class="unit">원/월</span></div>
+    </div>
+    <div class="row">
+      <span class="row-label">직책수당</span>
+      <div class="input-group"><input type="number" id="position-pay" value="0" min="0"><span class="unit">원/월</span></div>
+    </div>
+    <div class="row">
+      <span class="row-label">직무수당</span>
+      <div class="input-group"><input type="number" id="job-pay" value="0" min="0"><span class="unit">원/월</span></div>
+    </div>
+    <div class="row">
+      <span class="row-label">가족수당<span class="sub">전 직원 일률 지급분</span></span>
+      <div class="input-group"><input type="number" id="family-pay" value="0" min="0"><span class="unit">원/월</span></div>
+    </div>
+    <div class="row">
+      <span class="row-label">식대<span class="sub">전 직원 일률 지급분</span></span>
+      <div class="input-group"><input type="number" id="meal-pay" value="0" min="0"><span class="unit">원/월</span></div>
+    </div>
+    <div class="row">
+      <span class="row-label">교통비<span class="sub">전 직원 일률 지급분 / 실비변상이면 아래에서 제외</span></span>
+      <div class="input-group"><input type="number" id="transport-pay" value="0" min="0"><span class="unit">원/월</span></div>
+    </div>
+    <div class="row">
+      <span class="row-label">기타 고정수당</span>
+      <div class="input-group"><input type="number" id="other-pay" value="0" min="0"><span class="unit">원/월</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">상여금</div>
+  <div class="card">
+    <div class="bonus-mode-row">
+      <button class="mode-btn active" id="btn-rate"   onclick="setBonusMode('rate')">기본급 ×%</button>
+      <button class="mode-btn"        id="btn-amount" onclick="setBonusMode('amount')">회당 금액</button>
+      <button class="mode-btn"        id="btn-monthly" onclick="setBonusMode('monthly')">월환산 직접</button>
+    </div>
+
+    <!-- 모드1: 기본급 대비 % -->
+    <div class="mode-panel active" id="mode-rate">
+      <div class="row">
+        <span class="row-label">연간 상여율<span class="sub">기본급 대비 합산 %</span></span>
+        <div class="input-group"><input type="number" id="bonus-rate" value="0" min="0" oninput="updateBonusPreview()"><span class="unit">%</span></div>
+      </div>
+      <div class="row" style="border-bottom:none;padding-bottom:0;">
+        <span class="row-label">연간 분할 지급 횟수</span>
+        <select id="bonus-count-rate" onchange="updateBonusPreview()">
+          <option value="1">연 1회</option>
+          <option value="2" selected>연 2회</option>
+          <option value="3">연 3회</option>
+          <option value="4">연 4회</option>
+          <option value="6">연 6회</option>
+          <option value="12">매월</option>
+        </select>
+      </div>
+      <div class="bonus-preview" id="preview-rate">기본급을 먼저 입력하면 월할 환산액이 표시됩니다.</div>
+    </div>
+
+    <!-- 모드2: 회당 금액 -->
+    <div class="mode-panel" id="mode-amount">
+      <div class="row">
+        <span class="row-label">1회 지급액</span>
+        <div class="input-group"><input type="number" id="bonus-amount" value="0" min="0" oninput="updateBonusPreview()"><span class="unit">원</span></div>
+      </div>
+      <div class="row" style="border-bottom:none;padding-bottom:0;">
+        <span class="row-label">연간 지급 횟수</span>
+        <select id="bonus-count-amount" onchange="updateBonusPreview()">
+          <option value="1">연 1회</option>
+          <option value="2" selected>연 2회</option>
+          <option value="3">연 3회</option>
+          <option value="4">연 4회</option>
+          <option value="6">연 6회</option>
+          <option value="12">매월</option>
+        </select>
+      </div>
+      <div class="bonus-preview" id="preview-amount">금액을 입력하면 월할 환산액이 표시됩니다.</div>
+    </div>
+
+    <!-- 모드3: 월환산 직접 -->
+    <div class="mode-panel" id="mode-monthly">
+      <div class="row" style="border-bottom:none;padding-bottom:0;">
+        <span class="row-label">월 환산액<span class="sub">연간 합계 ÷ 12</span></span>
+        <div class="input-group"><input type="number" id="bonus-monthly" value="0" min="0" oninput="updateBonusPreview()"><span class="unit">원/월</span></div>
+      </div>
+      <div class="bonus-preview" id="preview-monthly">입력한 금액이 월 통상임금에 그대로 반영됩니다.</div>
+    </div>
+  </div>
+
+  <div class="section-title">항목별 산입 여부 확인</div>
+  <div class="card">
+    <div class="toggle-row">
+      <span class="toggle-label">가족수당 산입 여부<span class="sub">켜면 산입 / 끄면 제외</span></span>
+      <label class="toggle"><input type="checkbox" id="exc-family" checked onchange="updateBadge('family')"><span class="slider"></span></label>
+      <span class="badge badge-in" id="badge-family">산입</span>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label">식대 산입 여부<span class="sub">켜면 산입 / 실제 지출액 보전이면 끄고 제외</span></span>
+      <label class="toggle"><input type="checkbox" id="exc-meal" checked onchange="updateBadge('meal')"><span class="slider"></span></label>
+      <span class="badge badge-in" id="badge-meal">산입</span>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label">교통비 산입 여부<span class="sub">켜면 산입 / 실제 지출액 보전이면 끄고 제외</span></span>
+      <label class="toggle"><input type="checkbox" id="exc-transport" checked onchange="updateBadge('transport')"><span class="slider"></span></label>
+      <span class="badge badge-in" id="badge-transport">산입</span>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label">상여금 산입 여부<span class="sub">켜면 산입 / 끄면 제외. 재직조건만으로 제외하지 않음</span></span>
+      <label class="toggle"><input type="checkbox" id="exc-bonus" checked onchange="updateBadge('bonus')"><span class="slider"></span></label>
+      <span class="badge badge-in" id="badge-bonus">산입</span>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="calculate()">통상임금 계산하기</button>
+</div>
+
+<!-- ===== 결과 탭 ===== -->
+<div id="tab-result" class="panel">
+  <div class="btn-row">
+    <button class="sub-btn primary" onclick="copyResult()">📋 결과 복사</button>
+    <button class="sub-btn" onclick="resetAll()">↺ 새로 입력</button>
+  </div>
+  <div class="result-hero">
+    <div class="result-hero-label">월 통상임금 합계</div>
+    <div class="result-hero-val" id="res-monthly">0<span class="result-hero-unit">원</span></div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-label">시간급 통상임금</div>
+      <div class="metric-val" id="res-hourly">0<span class="metric-unit"> 원/h</span></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">일급 통상임금 (입력한 1일 시간 기준)</div>
+      <div class="metric-val" id="res-daily">0<span class="metric-unit"> 원/일</span></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">연장근로수당 (1h)</div>
+      <div class="metric-val" id="res-ot">0<span class="metric-unit"> 원</span></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">휴일근로수당 (8시간 이내·1h)</div>
+      <div class="metric-val" id="res-holiday">0<span class="metric-unit"> 원</span></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">야간근로 가산분 (1h·0.5배)</div>
+      <div class="metric-val" id="res-night">0<span class="metric-unit"> 원</span></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">휴일근로수당 (8시간 초과·1h)</div>
+      <div class="metric-val" id="res-holiday8">0<span class="metric-unit"> 원</span></div>
+    </div>
+  </div>
+
+  <div class="info-box"><p class="info-text" id="res-formula"></p><p class="info-text">모두 1시간 기준 예시입니다. 연장·휴일수당은 시간급을 포함한 금액(1.5배·2배)이고, 야간은 가산분(0.5배)만 표시합니다. 연장·휴일근로가 야간(22시~06시)과 겹치면 야간 가산분을 더합니다(예: 연장+야간 = 시간급×2.0). 상시 5인 미만 사업장은 가산 규정이 적용되지 않습니다. 표시는 원 단위 반올림하며 계산에는 반올림 전 시간급을 사용합니다.</p></div>
+  <div class="section-title">항목별 산입 내역</div>
+  <div class="card">
+    <div class="detail-row"><span class="detail-label">기본급</span><span class="detail-val" id="d-base">0원</span></div>
+    <div class="detail-row"><span class="detail-label">직책수당</span><span class="detail-val" id="d-position">0원</span></div>
+    <div class="detail-row"><span class="detail-label">직무수당</span><span class="detail-val" id="d-job">0원</span></div>
+    <div class="detail-row"><span class="detail-label">가족수당</span><span class="detail-val" id="d-family">0원</span></div>
+    <div class="detail-row"><span class="detail-label">식대</span><span class="detail-val" id="d-meal">0원</span></div>
+    <div class="detail-row"><span class="detail-label">교통비</span><span class="detail-val" id="d-transport">0원</span></div>
+    <div class="detail-row"><span class="detail-label">상여금 (월할 환산)</span><span class="detail-val" id="d-bonus">0원</span></div>
+    <div class="detail-row"><span class="detail-label">기타 고정수당</span><span class="detail-val" id="d-other">0원</span></div>
+    <div class="detail-row">
+      <span class="detail-label" style="font-weight:600;">합계</span>
+      <span class="detail-val detail-total" id="d-total">0원</span>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <p class="info-text">⚖️ <strong>2024.12.19 대법원 전원합의체 (2020다247190)</strong><br>통상임금 판단에서 '고정성' 요건 삭제. 정기성·일률성·소정근로 대가성 3요건 충족 시 통상임금 해당.<br><strong>적용 시점:</strong> 새 기준은 판결 선고일(2024.12.19.) 이후 산정하는 통상임금부터 적용합니다(해당 사건·병행사건 제외). 그 이전 기간 체불을 검산할 때는 종전 기준(고정성 포함) 적용 여부를 확인하세요.</p>
+  </div>
+</div>
+
+<!-- ===== 판단기준 탭 ===== -->
+<div id="tab-guide" class="panel">
+
+  <div class="section-title">통상임금 3대 요건</div>
+  <div class="card">
+    <div class="guide-row">
+      <span class="badge badge-in" style="min-width:48px;text-align:center;">정기성</span>
+      <span class="guide-label">일정한 간격으로 반복 지급<span class="guide-sub">연 2회·분기 지급도 정기성 인정</span></span>
+    </div>
+    <div class="guide-row">
+      <span class="badge badge-in" style="min-width:48px;text-align:center;">일률성</span>
+      <span class="guide-label">모든 근로자 또는 일정 조건 근로자에 일률 지급</span>
+    </div>
+    <div class="guide-row">
+      <span class="badge badge-in" style="min-width:48px;text-align:center;">대가성</span>
+      <span class="guide-label">소정근로의 대가<span class="guide-sub">근로제공 자체의 반대급부여야 함</span></span>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <p class="warn-text">📅 <strong>적용 시점 확인</strong> — 고정성 요건을 뺀 새 기준은 2024.12.19. 이후 산정하는 통상임금부터 적용됩니다(해당 사건·병행사건 제외). 재직·근무일수 조건부 상여 등을 그 이전 기간에 대해 검산할 때는 종전 기준을 따르는지 먼저 확인하세요.</p>
+  </div>
+
+  <div class="section-title">상여금 월할 환산 방법</div>
+  <div class="card">
+    <p style="font-size:13px;color:var(--text-sub);line-height:2;">
+      지급 횟수와 관계없이 <strong style="color:var(--text);">연간 총액 ÷ 12</strong>로 월 통상임금 산입<br>
+      예) 기본급 300만원 × 400% = 연 1,200만원<br>
+      → 월 산입액 <strong style="color:var(--green);">100만원</strong>
+    </p>
+  </div>
+
+  <div class="section-title">항목별 포함·제외 기준</div>
+  <div class="card">
+    <div class="guide-row"><span class="guide-label">기본급</span><span class="badge badge-in">포함</span></div>
+    <div class="guide-row"><span class="guide-label">직책·직무수당 (고정)</span><span class="badge badge-in">포함</span></div>
+    <div class="guide-row"><span class="guide-label">정기 상여금 (연 2회 포함)</span><span class="badge badge-in">포함</span></div>
+    <div class="guide-row"><span class="guide-label">식대·교통비 (전원 일률)</span><span class="badge badge-in">포함</span></div>
+    <div class="guide-row"><span class="guide-label">가족수당 (전원 일률)</span><span class="badge badge-in">포함</span></div>
+    <div class="guide-row"><span class="guide-label">가족수당 (부양가족 조건)</span><span class="badge badge-out">제외</span></div>
+    <div class="guide-row"><span class="guide-label">실비변상 식대·교통비</span><span class="badge badge-out">제외</span></div>
+    <div class="guide-row"><span class="guide-label">성과급·인센티브<span class="guide-sub">근무실적에 따른 성과급은 원칙적으로 제외. 실적과 무관한 최소지급분은 별도 검토</span></span><span class="badge badge-cond">개별 판단</span></div>
+    <div class="guide-row"><span class="guide-label">일·숙직수당</span><span class="badge badge-cond">개별 판단</span></div>
+  </div>
+
+  <div class="section-title">월 통상임금 산정시간 기준</div>
+  <div class="card">
+    <div class="guide-row"><span class="guide-label">주 40시간 사업장</span><strong style="color:var(--green);font-size:15px;">209시간</strong></div>
+    <div class="guide-row"><span class="guide-label">그 외 근무형태·별도 유급시간 약정</span><strong style="color:var(--green);font-size:13px;">실제 산정시간 직접 입력</strong></div>
+    <div class="guide-row" style="border-bottom:none;">
+      <span class="guide-label" style="font-size:11px;color:var(--text-hint);">일반 환산: (주 소정근로시간 + 소정근로 외 유급처리시간) × 365 ÷ 7 ÷ 12. 모든 근로자에게 주휴 8시간을 일괄 적용하지 않습니다.</span>
+    </div>
+  </div>
+
+  <div class="section-title">사용 안내</div>
+  <div class="card howto">
+    <b>📱 홈 화면에 추가하기</b> — 앱처럼 바로 실행됩니다.<br>
+    · 아이폰(사파리): 아래 공유 버튼 → '홈 화면에 추가'<br>
+    · 안드로이드(크롬·삼성인터넷): 메뉴(⋮ 또는 ≡) → '홈 화면에 추가'<br>
+    <b>📋 결과 복사</b> — 계산 결과 탭에서 누르면 입력 조건·산식·결과가 글자로 복사되어 검토 메모·보고서에 붙여 넣을 수 있습니다.<br>
+    <b>🔒 입력값</b> — 사용하는 기기 안에서만 계산되며 어디에도 저장·전송되지 않습니다. 화면을 닫으면 지워집니다.
+  </div>
+
+  <div class="warn-box">
+    <p class="warn-text">⚠️ 이 계산기는 현장 참고용 도구입니다. 시정지시·처분 등 공식 용도의 금액은 임금대장·근로계약서 등 원자료로 다시 검산하고, 관련 법령·판례·취업규칙·단체협약을 종합 검토하여 결정하세요.</p>
+  </div>
+
+  <div class="info-box">
+    <p class="info-text" style="font-size:10px;">
+      제작: 경기지방고용노동청 광역노동기준감독과 광역 AI 수사대<br>
+      기준: 2024.12.19 대법원 전원합의체 판결 (2020다247190)<br>
+      버전: 2026.10.22 Claude 수정본 (교통비 산입 선택, 야간·휴일 8시간 초과, 적용 시점 안내, 결과 복사·새로 입력, 홈 화면 추가)
+    </p>
+  </div>
+</div>
+
+<div class="footer">경기지방고용노동청 광역 AI 수사대 · 현장 참고용 · 2026.10.22 Claude 수정본</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let bonusMode = 'rate';
+let lastSummary = '';
+
+function switchTab(t) {
+  ['input','result','guide'].forEach(id => {
+    document.getElementById('tab-'+id).classList.toggle('active', id===t);
+  });
+  document.querySelectorAll('.tab-btn').forEach((el,i) => {
+    el.classList.toggle('active', ['input','result','guide'][i]===t);
+  });
+  window.scrollTo(0,0);
+}
+
+document.getElementById('weekly-hours').addEventListener('input', function() {
+  const wh = Number(this.value);
+  const monthly = document.getElementById('monthly-hours');
+  monthly.value = wh === 40 ? 209 : '';
+  monthly.placeholder = '실제 산정시간 입력';
+});
+document.getElementById('base-pay').addEventListener('input', updateBonusPreview);
+
+function setBonusMode(m) {
+  bonusMode = m;
+  ['rate','amount','monthly'].forEach(id => {
+    document.getElementById('mode-'+id).classList.toggle('active', id===m);
+    document.getElementById('btn-'+id).classList.toggle('active', id===m);
+  });
+  updateBonusPreview();
+}
+
+function getBonusMonthly() {
+  const base = parseFloat(document.getElementById('base-pay').value) || 0;
+  if (bonusMode === 'rate') {
+    const rate = parseFloat(document.getElementById('bonus-rate').value) || 0;
+    return (base * rate / 100) / 12;
+  } else if (bonusMode === 'amount') {
+    const amt = parseFloat(document.getElementById('bonus-amount').value) || 0;
+    const cnt = parseInt(document.getElementById('bonus-count-amount').value) || 2;
+    return (amt * cnt) / 12;
+  } else {
+    return parseFloat(document.getElementById('bonus-monthly').value) || 0;
+  }
+}
+
+function won(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
+
+function updateBonusPreview() {
+  const base = parseFloat(document.getElementById('base-pay').value) || 0;
+  const monthly = getBonusMonthly();
+  if (bonusMode === 'rate') {
+    const rate = parseFloat(document.getElementById('bonus-rate').value) || 0;
+    const cnt  = parseInt(document.getElementById('bonus-count-rate').value) || 2;
+    const annual = base * rate / 100;
+    document.getElementById('preview-rate').textContent = base === 0
+      ? '기본급을 먼저 입력하면 월할 환산액이 표시됩니다.'
+      : `기본급 ${won(base)} × 연간 합산 ${rate}% = 연 ${won(annual)} (연 ${cnt}회 분할 지급)\n→ 월 환산 산입액: ${won(monthly)}`;
+  } else if (bonusMode === 'amount') {
+    const amt = parseFloat(document.getElementById('bonus-amount').value) || 0;
+    const cnt = parseInt(document.getElementById('bonus-count-amount').value) || 2;
+    document.getElementById('preview-amount').textContent =
+      `연 ${cnt}회 × ${won(amt)} = 연 ${won(amt*cnt)}\n→ 월 환산 산입액: ${won(monthly)}`;
+  } else {
+    document.getElementById('preview-monthly').textContent =
+      `월 통상임금 산입액: ${won(monthly)}`;
+  }
+}
+
+function updateBadge(key) {
+  const checked = document.getElementById('exc-'+key).checked;
+  const badge   = document.getElementById('badge-'+key);
+  badge.textContent = checked ? '산입' : '제외';
+  badge.className   = 'badge ' + (checked ? 'badge-in' : 'badge-out');
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 1800);
+}
+function copyResult() {
+  if (!lastSummary) { toast('먼저 통상임금을 계산하세요'); switchTab('input'); return; }
+  const fallback = () => {
+    const ta = document.createElement('textarea'); ta.value = lastSummary; ta.setAttribute('readonly','');
+    ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta); toast(ok ? '결과를 복사했습니다' : '복사에 실패했습니다. 화면 내용을 직접 옮겨 주세요');
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(lastSummary).then(() => toast('결과를 복사했습니다'), fallback);
+  } else fallback();
+}
+function resetAll() {
+  if (!confirm('입력한 내용을 모두 지우고 처음부터 다시 입력할까요?')) return;
+  document.querySelectorAll('#tab-input input[type=number]').forEach(el => { el.value = el.defaultValue; });
+  document.querySelectorAll('#tab-input input[type=checkbox]').forEach(el => { el.checked = true; updateBadge(el.id.replace('exc-','')); });
+  document.querySelectorAll('#tab-input select').forEach(el => { el.value = '2'; });
+  setBonusMode('rate'); lastSummary = '';
+  switchTab('input'); toast('입력 내용을 지웠습니다');
+}
+
+function calculate() {
+  const ids = ['weekly-hours','monthly-hours','daily-hours','base-pay','position-pay','job-pay','family-pay','meal-pay','transport-pay','other-pay'];
+  ids.push(bonusMode === 'rate' ? 'bonus-rate' : bonusMode === 'amount' ? 'bonus-amount' : 'bonus-monthly');
+  for (const id of ids) {
+    const el = document.getElementById(id);
+    if (el.value.trim() === '' || !Number.isFinite(Number(el.value)) || !el.checkValidity()) {
+      alert('금액은 0 이상, 시간은 허용 범위 내의 값으로 입력하세요. 빈 항목은 0을 입력하고 월 산정시간을 확인하세요.');
+      el.focus();
+      el.reportValidity();
+      return;
+    }
+  }
+  const mh = Number(document.getElementById('monthly-hours').value);
+  const dh = Number(document.getElementById('daily-hours').value);
+  const base  = parseFloat(document.getElementById('base-pay').value)      || 0;
+  const pos   = parseFloat(document.getElementById('position-pay').value)  || 0;
+  const job   = parseFloat(document.getElementById('job-pay').value)       || 0;
+  const fam   = parseFloat(document.getElementById('family-pay').value)    || 0;
+  const meal  = parseFloat(document.getElementById('meal-pay').value)      || 0;
+  const trans = parseFloat(document.getElementById('transport-pay').value) || 0;
+  const other = parseFloat(document.getElementById('other-pay').value)     || 0;
+  const bonus = getBonusMonthly();
+
+  const famInc   = document.getElementById('exc-family').checked ? fam : 0;
+  const mealInc  = document.getElementById('exc-meal').checked   ? meal : 0;
+  const transInc = document.getElementById('exc-transport').checked ? trans : 0;
+  const bonusInc = document.getElementById('exc-bonus').checked  ? bonus : 0;
+
+  const total  = base + pos + job + famInc + mealInc + transInc + bonusInc + other;
+  if (!Number.isFinite(total) || !Number.isFinite(total / mh)) { alert("입력 금액이 계산 가능한 범위를 초과했습니다."); return; }
+  const hourly = total / mh;
+
+  document.getElementById('res-monthly').innerHTML  = Math.round(total).toLocaleString('ko-KR') + '<span class="result-hero-unit">원</span>';
+  document.getElementById('res-hourly').innerHTML   = Math.round(hourly).toLocaleString('ko-KR') + '<span class="metric-unit"> 원/h</span>';
+  document.getElementById('res-daily').innerHTML    = Math.round(hourly*dh).toLocaleString('ko-KR') + '<span class="metric-unit"> 원/일</span>';
+  document.getElementById('res-ot').innerHTML       = Math.round(hourly*1.5).toLocaleString('ko-KR') + '<span class="metric-unit"> 원</span>';
+  document.getElementById('res-holiday').innerHTML  = Math.round(hourly*1.5).toLocaleString('ko-KR') + '<span class="metric-unit"> 원</span>';
+  document.getElementById('res-night').innerHTML    = Math.round(hourly*0.5).toLocaleString('ko-KR') + '<span class="metric-unit"> 원</span>';
+  document.getElementById('res-holiday8').innerHTML = Math.round(hourly*2).toLocaleString('ko-KR') + '<span class="metric-unit"> 원</span>';
+
+  const setD = (id, val, excluded) => {
+    document.getElementById(id).textContent = won(val) + (excluded ? ' (제외)' : '');
+    document.getElementById(id).className = 'detail-val' + (excluded ? ' out' : '');
+  };
+  setD('d-base',      base,  false);
+  setD('d-position',  pos,   false);
+  setD('d-job',       job,   false);
+  setD('d-family',    fam,   !document.getElementById('exc-family').checked);
+  setD('d-meal',      meal,  !document.getElementById('exc-meal').checked);
+  setD('d-transport', trans, !document.getElementById('exc-transport').checked);
+  setD('d-bonus',     bonus, !document.getElementById('exc-bonus').checked);
+  setD('d-other',     other, false);
+  document.getElementById('d-total').textContent = won(total);
+
+  document.getElementById('res-formula').textContent = `월 통상임금 ${won(total)} ÷ 월 산정시간 ${mh}시간 = 시간급 ${won(hourly)} / 일급: 시간급 × ${dh}시간`;
+  const ex = (v, on) => won(v) + (on ? '' : ' (제외)');
+  const bonusDesc = bonusMode === 'rate' ? `기본급 대비 연 ${document.getElementById('bonus-rate').value}%`
+    : bonusMode === 'amount' ? `1회 ${won(Number(document.getElementById('bonus-amount').value))} × 연 ${document.getElementById('bonus-count-amount').value}회` : '월 환산액 직접 입력';
+  lastSummary = [
+    '[통상임금 검산] ' + new Date().toLocaleDateString('ko-KR'),
+    `○ 산정시간: 주 소정 ${document.getElementById('weekly-hours').value}시간 / 월 ${mh}시간 / 1일 ${dh}시간`,
+    `○ 기본급 ${won(base)}, 직책수당 ${won(pos)}, 직무수당 ${won(job)}`,
+    `○ 가족수당 ${ex(fam, famInc===fam && document.getElementById('exc-family').checked)}, 식대 ${ex(meal, document.getElementById('exc-meal').checked)}, 교통비 ${ex(trans, document.getElementById('exc-transport').checked)}`,
+    `○ 상여금 월할 ${ex(bonus, document.getElementById('exc-bonus').checked)} (${bonusDesc}), 기타 고정수당 ${won(other)}`,
+    `○ 월 통상임금 ${won(total)} ÷ ${mh}시간 = 시간급 ${won(hourly)} (일급 ${won(hourly*dh)})`,
+    `○ 1시간당: 연장 ${won(hourly*1.5)} / 휴일 8h 이내 ${won(hourly*1.5)} / 휴일 8h 초과 ${won(hourly*2)} / 야간 가산 ${won(hourly*0.5)}`,
+    '※ 통상임금 현장 계산기(광역 AI 수사대, 2026.10.22 Claude 수정본) 참고용 결과 — 원자료로 재검산 필요'
+  ].join('\n');
+  switchTab('result');
+}
+</script>
+</body>
+</html>
